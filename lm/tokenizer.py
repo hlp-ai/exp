@@ -20,7 +20,7 @@ class Tokenizer:
         self.bos_id: int = self.sp_model.bos_id()
         self.eos_id: int = self.sp_model.eos_id()
         self.pad_id: int = self.sp_model.pad_id()
-        # print(f"#words: {self.n_words} - BOS ID: {self.bos_id} - EOS ID: {self.eos_id}")
+        print(f"#words: {self.n_words} - BOS ID: {self.bos_id} - EOS ID: {self.eos_id} - PAD ID: {self.pad_id}")
         assert self.sp_model.vocab_size() == self.sp_model.get_piece_size()
 
     def encode(self, s: str, bos: bool, eos: bool) -> List[int]:
@@ -34,3 +34,9 @@ class Tokenizer:
 
     def decode(self, t: List[int]) -> str:
         return self.sp_model.decode(t)
+
+
+if __name__ == "__main__":
+    tokenizer = Tokenizer()
+    print(f"# vocab: {tokenizer.n_words}")
+    print(f"model path: {tokenizer.model_path}")
