@@ -22,6 +22,7 @@ import time
 from contextlib import nullcontext
 from datetime import datetime
 from functools import partial
+from pprint import pprint
 
 import torch
 from lm.model import Transformer, ModelArgs
@@ -79,6 +80,8 @@ config_keys = [
 exec(open("configurator.py").read())  # overrides from command line or config file
 config = {k: globals()[k] for k in config_keys}  # will be useful for logging
 # -----------------------------------------------------------------------------
+
+pprint(config)
 
 # fixing some hyperparams to sensible defaults
 lr_decay_iters = max_iters  # should be ~= max_iters per Chinchilla
